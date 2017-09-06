@@ -1,6 +1,10 @@
-require  './LoginPage.rb'
+require './LoginPage.rb'
 require './MainPage.rb'
 require './BasePage.rb'
+require './SubmitPage.rb'
+require './JiraUploadPage.rb'
+require 'io/console'
+
 require 'pry-byebug'
 
 Capybara.configure do |config|
@@ -40,25 +44,42 @@ end
 
   let(:main_page) { MainPage.new }
   let(:login_page) { LoginPage.new }
+  let(:submit_page) {SubmitPage.new}
+  let(:jira_upload_page) {JiraUploadPage.new}
 
-
-
-  test
 
   context 'Time log' do
-
+    before(:all) do
+      print 'Please type comment, sir:'
+             @comment =  STDIN.gets
+      print 'Please type username, sir:'
+             @username =  STDIN.gets
+      print 'Please type password, sir:'
+             @password =  STDIN.noecho(&:gets)
+    end
+  
+  
     scenario 'Code writing' do
       login_page.visit('http://185.80.129.43:8080/')
       login_page.login_as('e.dylevsky')
-      binding.pry
+       
       main_page.setup_activity(code_writing[:product], code_writing[:project],
-                               code_writing[:activity_type], code_writing[:time_spent],
-                               code_writing[:comment], code_writing[:log_ticket_link])
-
-      main_page.setup_activity(communication[:product], communication[:project],
-                               communication[:activity_type], communication[:time_spent],
-                               communication[:comment], communication[:log_ticket_link])
-
+                               code_writing[:activity_type], '1m',
+                               @comment, 'test')
+      sleep(2)
+      main_page.submit_selected_activities
+      sleep(2)
+      submit_page.download_xls_file
+    end
+    
+    scenario 'Download and submit file' do
+      jira_upload_page.visit('https://jira.a1qa.com/secure/WorkLogImportHandler.jspa')
+      jira_upload_page.login_as_user(@username, @password)
+      sleep(2)
+      jira_upload_page.upload_file
+      jira_upload_page.submit_time
+      sleep(5)
+      jira_upload_page.delete_file
     end
   end
 end

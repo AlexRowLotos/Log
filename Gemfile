@@ -11,5 +11,6 @@ gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug', ref: '5c72fb'
 gem "chromedriver-helper"
 gem 'site_prism'
 gem 'sqlite3'
+gem 'io-console'
 
 # gem "rails"

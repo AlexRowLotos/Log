@@ -15,5 +15,4 @@ class BasePage < SitePrism::Page
  def unselect_optione(css_selector, value)
     find(:css, css_selector).find(:option, value).unselect_option
   end
-
 end

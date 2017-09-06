@@ -3,6 +3,7 @@ require './BasePage.rb'
 class MainPage < BasePage 
 
 	element :add_activity_button, :xpath, ".//*[@id='activityAddBtn']"
+  element :submit_button, :xpath, "//body/div/button[@id='edit']"
 	element :save_add_button, '#submitModal_Add'
 	element :logout_link, :xpath, "//a[text()='Logout']"
 	element :product_dropdown, "[data-id=selectIdProject]"
@@ -13,8 +14,6 @@ class MainPage < BasePage
 
 	element :link_to_jira_input, :xpath, "//div[@id='fields_of_project_id_Server']//*[@id='input_A1QA JIRA Task Key']"
 
-
-
 	def click_logout_link
 	 	logout_link.click
 	end
@@ -23,9 +22,12 @@ class MainPage < BasePage
 		click_logout_link
 	end
 
+	def submit_selected_activities
+	  click_submit_button
+	end
+	
 	def select_product(product)
 		product_dropdown.find(:xpath,'..').find(:xpath, ".//option[contains(text(),'#{product}')]").select_option
-
 	end
 
 	def select_project(project)
@@ -69,5 +71,9 @@ class MainPage < BasePage
 
 	def click_button_add_activity
 		add_activity_button.click
+	end
+	
+	def click_submit_button
+    submit_button.click
 	end
 end
