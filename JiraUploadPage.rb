@@ -1,4 +1,4 @@
-require './BasePage.rb'
+require_relative './BasePage.rb'
 
 class JiraUploadPage < BasePage
   

@@ -1,10 +1,9 @@
-require './LoginPage.rb'
-require './MainPage.rb'
-require './BasePage.rb'
-require './SubmitPage.rb'
-require './JiraUploadPage.rb'
+require_relative './LoginPage.rb'
+require_relative './MainPage.rb'
+require_relative './BasePage.rb'
+require_relative './SubmitPage.rb'
+require_relative './JiraUploadPage.rb'
 require 'io/console'
-
 require 'pry-byebug'
 
 Capybara.configure do |config|
