@@ -6,7 +6,7 @@ class JiraUploadPage < BasePage
   element :submit_button, :xpath, "//button[text()='Submit']"
   element :login_field, '#login-form-username'
   element :password_field, '#login-form-password'
-  element :login_button, '#login-form-submit'
+ # element :login_button, '#login-form-submit'
   
   def delete_file
     File.delete(Dir["/home/alexrow/Загрузки/*#{Date.today.strftime('%d-%m-%Y')}*"].first)
@@ -27,7 +27,6 @@ class JiraUploadPage < BasePage
   def login_as_user(username,password)
     set_username(username)
     set_password(password)
-    click_login_button
   end
     
   def set_username(username)
@@ -37,9 +36,9 @@ class JiraUploadPage < BasePage
   def set_password(password)
     password_field.set(password)
   end
-  
+=begin 
   def click_login_button
     login_button.click
   end
-  
+=end
 end

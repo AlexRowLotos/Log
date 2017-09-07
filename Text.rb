@@ -49,11 +49,11 @@ end
 
   context 'Time log' do
     before(:all) do
-      print 'Please type comment, sir:'
+      print 'Comment: '
              @comment =  STDIN.gets
-      print 'Please type username, sir:'
+      print 'Jira username: '
              @username =  STDIN.gets
-      print 'Please type password, sir:'
+      print 'Jira password: '
              @password =  STDIN.noecho(&:gets)
     end
   
@@ -64,8 +64,8 @@ end
        
       main_page.setup_activity(code_writing[:product], code_writing[:project],
                                code_writing[:activity_type], code_writing[:time_spent],
-                               @comment, code_writing[log_ticket_link])
-                               
+                               @comment, code_writing[:log_ticket_link])
+      sleep(2)
       main_page.setup_activity(communication[:product], communication[:project],
                                     communication[:activity_type], communication[:time_spent],
                                     communication[:comment], communication[:log_ticket_link])
@@ -74,6 +74,7 @@ end
       main_page.submit_selected_activities
       sleep(2)
       submit_page.download_xls_file
+      sleep(5)
     end
     
     scenario 'Download and submit file' do

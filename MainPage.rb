@@ -58,6 +58,7 @@ class MainPage < BasePage
 		set_time(time_spent)
 		set_comment(comment)
 		set_link(log_ticket_link)
+		binding.pry
 		click_button_add_save
 	end
 
