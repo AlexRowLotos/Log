@@ -1,0 +1,25 @@
+current directory: /home/alexrow/Backup/Reset/Test/vendor/cache/ruby/2.3.0/gems/io-console-0.4.6
+/usr/bin/ruby2.3 -r ./siteconf20170907-2594-jwvfc4.rb extconf.rb
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for rb_funcallv()... yes
+checking for rb_sym2str()... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/alexrow/Backup/Reset/Test/vendor/cache/ruby/2.3.0/extensions/x86_64-linux/2.3.0/io-console-0.4.6/mkmf.log
+
+current directory: /home/alexrow/Backup/Reset/Test/vendor/cache/ruby/2.3.0/gems/io-console-0.4.6
+make "DESTDIR=" clean
+
+current directory: /home/alexrow/Backup/Reset/Test/vendor/cache/ruby/2.3.0/gems/io-console-0.4.6
+make "DESTDIR="
+compiling console.c
+linking shared-object io/console.so
+
+current directory: /home/alexrow/Backup/Reset/Test/vendor/cache/ruby/2.3.0/gems/io-console-0.4.6
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 console.so ./.gem.20170907-2594-hbgfha/io
+installing default console libraries
