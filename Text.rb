@@ -63,8 +63,13 @@ end
       login_page.login_as('e.dylevsky')
        
       main_page.setup_activity(code_writing[:product], code_writing[:project],
-                               code_writing[:activity_type], '1m',
-                               @comment, 'test')
+                               code_writing[:activity_type], code_writing[:time_spent],
+                               @comment, code_writing[log_ticket_link])
+                               
+      main_page.setup_activity(communication[:product], communication[:project],
+                                    communication[:activity_type], communication[:time_spent],
+                                    communication[:comment], communication[:log_ticket_link])
+
       sleep(2)
       main_page.submit_selected_activities
       sleep(2)
